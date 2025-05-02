@@ -9,14 +9,31 @@ import random
 questions = {
     "Science": [
         ("What is the chemical symbol for water?", "H2O"),
+        ("What is the chemical symbol for Salt?", "Nacl"),
+        ("What is the chemical symbol for sulphuric acid?", "H2SO4"),
+        ("What is the chemical symbol for Hydrogen?", "H2")
         # Add more questions as tuples (question, answer)
     ],
+    "Math": [
+    ("What is the square root of 144?", "12"),
+    ("What is 7 x 8?", "56"),
+    ("What is the value of π (up to 2 decimal places)?", "3.14")
+]
+
 }
 
 hints = {
-    "Science": [
+    "Science": [("What is the chemical symbol for water?", "H2O"),
+        ("What is the chemical symbol for Salt?", "Nacl"),
+        ("What is the chemical symbol for sulphuric acid?", "H2SO4"),
+        ("What is the chemical symbol for Hydrogen?", "H2")
         # Pair each question with a corresponding hint.
     ],
+    "Math": [
+    ("What is the square root of 144?", "12"),
+    ("What is 7 x 8?", "56"),
+    ("What is the value of π (up to 2 decimal places)?", "3.14")
+]
     # Repeat for other categories as needed.
 }
 
@@ -73,7 +90,12 @@ def remove_question(category, question):
     #------------------------
     # Add your code here
     #------------------------
-    raise NotImplementedError("This function is not implemented yet.")
+    L=questions[category]
+    for i in L:
+        if i[0]==question:
+            L.remove(i)
+            questions[category]=L
+            break
     #------------------------
 
 #---------------------------------------
@@ -90,6 +112,8 @@ def display_question_and_accept_answer(question):
     """
     #------------------------
     # Add your code here
+    print(question)
+    ans=input("Give your answer: ")
     #------------------------
     raise NotImplementedError("This function is not implemented yet.")
     #------------------------
@@ -109,8 +133,13 @@ def provide_hint(category, question):
     """
     #------------------------
     # Add your code here
+    
+    L=questions[category]
+    for i in L:
+        if i[0]==question:
+            return i[1]    
+    
     #------------------------
-    raise NotImplementedError("This function is not implemented yet.")
     #------------------------
 
 #---------------------------------------
@@ -128,7 +157,6 @@ def display_correct_answer(correct_answer):
     #------------------------
     # Add your code here
     #------------------------
-    raise NotImplementedError("This function is not implemented yet.")
     #------------------------
 
 #---------------------------------------
